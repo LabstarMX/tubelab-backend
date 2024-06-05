@@ -1,12 +1,15 @@
+const PORT = 8000;
 const express = require('express')
 const ytdl = require('ytdl-core')
 const cors = require('cors');
 const app = express()
 
-// app.use(cors());
+app.use(cors());
 
 app.use(cors({
-  origin: 'https://labtube.netlify.app'
+//   origin: 'https://labtube.netlify.app'
+    // origin: 'https://tubelab.netlify.app'
+    origin: '*'
 }));
 
 // app.use((req, res, next) => {
@@ -28,12 +31,16 @@ app.get('/download', async (req, res) => {
             url: 'https://www.youtube.com/embed/'+videoId,
             info: metaInfo.formats
         }
-        return res.send(data)
+        console.log(data)
+        return res.json(data)
     } catch(error) {
         return res.status(500)
     }
 })
 
-app.listen(4000, () => {
-    console.log(`Server is running on PORT: 4000`)
+
+app.listen(PORT, () => {
+    console.log(`Server is running on PORT: ${PORT} ` )
 })
+
+
