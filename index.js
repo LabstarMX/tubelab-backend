@@ -4,7 +4,7 @@ const ytdl = require('ytdl-core')
 const cors = require('cors');
 const app = express()
 
-app.use(cors());
+// app.use(cors());
 
 app.use(cors({
 //   origin: 'https://labtube.netlify.app'
